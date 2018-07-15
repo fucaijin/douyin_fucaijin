@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:myns="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#8aa7ff"
+    tools:context="com.fucaijin.douyin_fcj.activity.MainActivity">
+
+    <!--视频播放插件-->
+    <com.fucaijin.douyin_fcj.view.MyVideoView
+        android:id="@+id/video_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true" />
+
+    <!--顶上那行-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="18dp"
+            android:alpha="0.7"
+            android:src="@mipmap/search" />
+
+        <TextView
+            android:id="@+id/tv_recommend"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:text="推荐"
+            android:textColor="@color/colorWhite"
+            android:textSize="17sp" />
+
+        <ImageView
+            android:layout_width="1dp"
+            android:layout_height="6dp"
+            android:layout_margin="9dp"
+            android:alpha="0.7"
+            android:background="@color/colorWhite" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:alpha="0.7"
+            android:gravity="start"
+            android:text="同城"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:layout_width="22dp"
+            android:layout_height="10dp"
+            android:layout_marginEnd="19dp"
+            android:alpha="0.7"
+            android:src="@mipmap/story" />
+
+    </LinearLayout>
+
+    <!--底部指示栏-->
+    <RelativeLayout
+        android:id="@+id/bottom_indicate_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/bottom_bar_height"
+        android:layout_alignParentBottom="true">
+
+        <!--首页-->
+        <RelativeLayout
+            style="@style/indicatorItemRoot"
+            android:layout_marginStart="13dp">
+
+            <TextView
+                android:id="@+id/tv_home_page"
+                style="@style/indicatorItemText"
+                android:text="@string/home_page"
+                android:textColor="@color/colorWhite" />
+
+            <ImageView
+                style="@style/indicatorItemNotifyImage"
+                android:visibility="visible" />
+
+        </RelativeLayout>
+
+        <!--关注-->
+        <RelativeLayout
+            style="@style/indicatorItemRoot"
+            android:layout_marginStart="86dp">
+
+            <TextView
+                android:id="@+id/home_tv_follow_page"
+                style="@style/indicatorItemText"
+                android:text="@string/follow" />
+
+            <TextView
+                style="@style/indicatorItemNotifyText"
+                android:layout_toEndOf="@id/home_tv_follow_page"
+                android:text="6"
+                android:textColor="#590011"
+                android:visibility="visible" />
+
+        </RelativeLayout>
+
+        <!--开拍-->
+        <ImageView
+            android:layout_width="43dp"
+            android:layout_height="28dp"
+            android:layout_centerInParent="true"
+            android:background="@mipmap/new_video" />
+
+        <!--消息-->
+        <TextView
+            style="@style/indicatorItemText"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="86dp"
+            android:text="@string/message" />
+
+        <!--我-->
+        <TextView
+            android:id="@+id/home_tv_me_page"
+            style="@style/indicatorItemText"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="22dp"
+            android:text="@string/me" />
+    </RelativeLayout>
+
+    <!--底部标题栏分割线-->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:layout_alignTop="@id/bottom_indicate_bar"
+        android:alpha="0.3"
+        android:background="@color/colorWhite" />
+
+    <!--右侧栏-->
+    <LinearLayout
+        android:layout_width="61dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="@dimen/bottom_bar_height"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <!--隐形按钮-->
+        <Button
+            android:id="@+id/gone_btn"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@null" />
+
+        <!--头像-->
+        <com.fucaijin.douyin_fcj.view.OvalImageView
+            android:clickable="true"
+            android:layout_width="49dp"
+            android:layout_height="49dp"
+            android:src="@mipmap/head_sculpture"
+            myns:stroke_color="@color/colorWhite"
+            myns:stroke_width="1dp" />
+
+        <!--关注-->
+        <FrameLayout
+            android:id="@+id/follow_root"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-10dp">
+
+            <!--白色-->
+            <RelativeLayout
+                android:id="@+id/white_follow"
+                android:layout_width="19dp"
+                android:layout_height="19dp"
+                android:background="@drawable/white_circle_bg">
+
+                <!--长线-->
+                <ImageView
+                    android:id="@+id/long_red_line"
+                    android:layout_width="2dp"
+                    android:layout_height="9dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/red_circle_corners_bg" />
+
+                <!--短线-->
+                <ImageView
+                    android:id="@+id/short_red_line"
+                    android:layout_width="3dp"
+                    android:layout_height="2dp"
+                    android:layout_alignBottom="@id/long_red_line"
+                    android:layout_alignEnd="@id/long_red_line"
+                    android:layout_gravity="center"
+                    android:src="@drawable/red_circle_corners_bg" />
+
+
+            </RelativeLayout>
+
+            <!--红色-->
+            <FrameLayout
+                android:id="@+id/red_follow"
+                android:layout_width="19dp"
+                android:layout_height="19dp"
+                android:background="@drawable/red_circle_bg">
+
+                <!--横线-->
+                <ImageView
+                    android:id="@+id/horizontal_white_line"
+                    android:layout_width="9dp"
+                    android:layout_height="2dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/white_circle_corners_bg" />
+
+                <!--竖线-->
+                <ImageView
+                    android:id="@+id/vertical_white_line"
+                    android:layout_width="2dp"
+                    android:layout_height="9dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/white_circle_corners_bg" />
+            </FrameLayout>
+
+        </FrameLayout>
+
+        <!--赞-->
+        <com.fucaijin.douyin_fcj.view.HeartImageView
+            android:id="@+id/praise_iv"
+            android:src="@mipmap/praise_gray_heart"
+            android:layout_marginTop="27dp"
+            style="@style/right_menu_style" />
+
+        <!--&lt;!&ndash;赞&ndash;&gt;-->
+        <!--<ImageView-->
+            <!--android:id="@+id/praise_iv"-->
+            <!--android:src="@mipmap/red_heart_gray"-->
+            <!--android:layout_marginTop="27dp"-->
+            <!--style="@style/right_menu_style" />-->
+
+        <!--点赞人数-->
+        <TextView
+            style="@style/GrayTextSmall"
+            android:text="89.3w" />
+
+        <!--评论-->
+        <ImageView
+            style="@style/right_menu_style"
+            android:src="@mipmap/comment" />
+
+        <!--评论人数-->
+        <TextView
+            style="@style/GrayTextSmall"
+            android:text="3.5w" />
+
+        <!--分享-->
+        <ImageView
+            style="@style/right_menu_style"
+            android:src="@mipmap/share" />
+
+        <!--分享人数-->
+        <TextView
+            style="@style/GrayTextSmall"
+            android:text="1.2w" />
+
+        <!--音乐封面-->
+        <com.fucaijin.douyin_fcj.view.OvalImageView
+            android:id="@+id/music_album_iv"
+            android:layout_width="49dp"
+            android:layout_height="49dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginTop="44dp"
+            android:src="@mipmap/use_muic" />
+
+
+    </LinearLayout>
+
+    <!--左侧栏-->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/bottom_bar_height"
+        android:layout_marginStart="15dp"
+        android:orientation="vertical">
+
+        <!--挑战-->
+        <TextView
+            android:id="@+id/tv_challenge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:background="@drawable/rect"
+            android:drawablePadding="3dp"
+            android:gravity="center"
+            android:padding="2dp"
+            android:text="搞笑 "
+            android:textColor="#F0EFEF"
+            android:textSize="13sp" />
+
+        <!--用户名-->
+        <TextView
+            android:id="@+id/tv_nick_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="6dp"
+            android:text="\@胖大侠"
+            android:textColor="@color/colorWhite"
+            android:textSize="15sp" />
+
+        <!--视频介绍-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="世界杯期间，老同学忽然一夜暴富？"
+            android:textColor="#EEEDED" />
+
+        <!--跑马灯音乐信息-->
+        <LinearLayout
+            android:layout_width="181dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="11dp"
+                android:layout_height="13dp"
+                android:layout_marginEnd="10dp"
+                android:src="@mipmap/music" />
+
+            <TextView
+                android:id="@+id/tv_music_info"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="marquee"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:paddingEnd="-30dp"
+                android:paddingStart="-30dp"
+                android:textColor="#EEEDED" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!--播放按钮-->
+    <ImageView
+        android:id="@+id/iv_play_pause"
+        android:layout_width="53dp"
+        android:layout_height="62dp"
+        android:layout_centerInParent="true"
+        android:src="@mipmap/play_icon"
+        android:visibility="gone" />
+
+</RelativeLayout>

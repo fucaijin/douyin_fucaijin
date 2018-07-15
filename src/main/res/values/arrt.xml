@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="OvalImageView"> //自定义View的类名
+        <attr name="stroke_width" format="dimension" />//边框厚度
+        <attr name="stroke_color" format="color" />//边框颜色
+    </declare-styleable>
+</resources>

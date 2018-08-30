@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements MediaPlayer.OnPre
     }
 
     private void initData() {
-        String path = Environment.getExternalStorageDirectory().getPath() + "/" + "DCIM/Camera/skating.mp4";
+        String path = Environment.getExternalStorageDirectory().getPath() + "/" + "video.mp4";
         Uri uri = Uri.parse(path);
         mVideoView.setVideoURI(uri);
 
@@ -210,7 +210,9 @@ public class MainActivity extends AppCompatActivity implements MediaPlayer.OnPre
 
     @Override
     protected void onDestroy() {
-        mVideoView.stopPlayback();
+        if(mVideoView != null){
+            mVideoView.stopPlayback();
+        }
         super.onDestroy();
     }
 
